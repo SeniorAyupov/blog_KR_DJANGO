@@ -1,0 +1,33 @@
+{% extends "blog/base_generic.html" %}
+
+{% block title %}<title>{{ title }}</title>{% endblock %}
+
+{% block content %}
+    <div class="container">
+      <div class="d-flex justify-content-center align-baseline form-signin ">
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group m-1 p-3">
+
+                <label for="{{ form.username.id_for_label }}">Имя пользователя: </label><br>
+                {{ form.username }}
+                    {{ form.username.errors }}
+
+                <label for="{{ form.password.id_for_label }}">Пароль: </label><br>
+                {{ form.password }}
+                    {{ form.password.errors }}
+
+            </div>
+
+            <nav aria-label="breadcrumb" class="d-flex justify-content-center align-baseline">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item active" aria-current="page"><a href="{% url 'register' %}">У Вас ещ нет аккаунта? Зарегистрируйтесь.</a></li>
+                </ol>
+            </nav>
+            <button class="w-100 btn btn-lg btn-outline-primary" type="submit">Войти</button>
+        </form>
+      </div>
+    </div>
+
+
+{% endblock %}
